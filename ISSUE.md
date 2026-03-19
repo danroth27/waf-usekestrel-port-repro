@@ -4,6 +4,8 @@
 
 `WebApplicationFactory<T>.UseKestrel(int port)` correctly applies the port when called on the base factory or a subclass, but silently ignores the port parameter when called on a factory derived via `WithWebHostBuilder()`. The server falls back to Kestrel's default port (5000) instead of using the specified port.
 
+`WithWebHostBuilder` is the [documented approach](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0#customize-the-client-with-withwebhostbuilder) for per-test service customization, including [injecting mock services](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0#inject-mock-services).
+
 ## Repro
 
 https://github.com/danroth27/waf-usekestrel-port-repro
